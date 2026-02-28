@@ -1,11 +1,11 @@
- // JSDoc
- 
- /**
-  * Next.js configuration
-  * @type {import('next').NextConfig}
-  */
- const nextConfig = {
-   reactStrictMode: true,
- };
+// JSDoc
 
- export default nextConfig;
+/**
+ * Next.js configuration
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  reactStrictMode: true,
+};
+
+export default nextConfig;
