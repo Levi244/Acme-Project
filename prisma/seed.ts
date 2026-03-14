@@ -139,8 +139,8 @@ async function main() {
 
   for (const data of revenueData) {
     await prisma.revenue.upsert({
-      where: { mounth: data.month },
-      update: { revunue: data.revenue },
+      where: { month: data.month },
+      update: { revenue: data.revenue },
       create: data
     });
   };
