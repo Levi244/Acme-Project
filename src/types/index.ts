@@ -1,5 +1,3 @@
-import { inter } from "@/app/ui/fonts";
-
 export interface User {
   id: string;
   name: string;
@@ -8,17 +6,17 @@ export interface User {
 };
 
 export type CreateUserData = Omit<User, 'id'>;
-export type UpdateUserData = Partial<CreateUserData>;
+export type UpdateUserData = Partial<CreateUserData>
 
 export interface Customer {
   id: string;
   name: string;
   email: string;
-  ImageUrl: string;
+  imageUrl: string;
 };
 
 export type CreateCustomerData = Omit<Customer, 'id'>;
-export type UpdateCustomerData = Partial<CreateUserData>;
+export type UpdateCustomerData = Partial<CreateCustomerData>;
 
 export type InvoiceStatus = 'PEDENTE' | 'PAGO';
 
@@ -31,7 +29,7 @@ export interface Invoice {
 };
 
 export type CreateInvoiceData = Omit<Invoice, 'id'>;
-export type UpdateInvoiceData = Partial<CreateUserData>;
+export type UpdateInvoiceData = Partial<CreateInvoiceData>;
 
 export interface Revenue {
   month: string;
