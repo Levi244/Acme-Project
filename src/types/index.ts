@@ -1,3 +1,5 @@
+export type SortOrder = 'asc' | 'desc';
+
 export interface User {
   id: string;
   name: string;
@@ -18,22 +20,55 @@ export interface Customer {
 export type CreateCustomerData = Omit<Customer, 'id'>;
 export type UpdateCustomerData = Partial<CreateCustomerData>;
 
-export type InvoiceStatus = 'PEDENTE' | 'PAGO';
+export interface FindAllCustomersParams {
+  search?: string;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: SortOrder;
+};
+
+export type InvoiceStatus = 'PENDENTE' | 'PAGO';
 
 export interface Invoice {
   id: string;
-  customer_id: string;
+  customerId: string;
   amount: number;
   date: Date;
   status: InvoiceStatus;
+  customer?: {
+    name: string;
+    email: string;
+    imageUrl: string;
+  }
 };
 
-export type CreateInvoiceData = Omit<Invoice, 'id'>;
+export type CreateInvoiceData = Omit<Invoice, 'id' | 'customer'>;
 export type UpdateInvoiceData = Partial<CreateInvoiceData>;
+
+export interface FindAllInvoiceParams {
+  search?: string;
+  page?: number;
+  limit?: number;
+  order?: SortOrder;
+};
 
 export interface Revenue {
   month: string;
   revenue: number;
+};
+
+export interface PaginationMeta {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  hasMore: boolean;
+};
+
+export interface PaginatedReponse<T> {
+  data: T[];
+  meta: PaginationMeta;
 };
 
 export interface ApiResponse<T> {
@@ -43,5 +78,5 @@ export interface ApiResponse<T> {
 
 export interface ApiError {
   error: string;
-  details?: unknown;
+  details?: Record<string, string[]>;
 };
